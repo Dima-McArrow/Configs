@@ -1,0 +1,274 @@
+# ~/.config/starship.toml
+
+# Inserts a blank line between shell prompts
+add_newline = true
+command_timeout = 3000
+
+# Change the default prompt format
+format = """\
+[╭╴](238)$os$shell \
+$all[ ─](238)$character"""
+
+# new_config
+# format = """ $os$all$character """
+
+# Change the default prompt characters
+[character]
+success_symbol = "[ ❯](green)(238)"
+error_symbol = "[ ❯](red)(238)"
+
+# Shows an icon that should be included by zshrc script based on the distribution or os
+#[env_var.STARSHIP_DISTRO]
+#format = '[$env_value](bold white)'  # removed space between distro and rest for pwsh
+#variable = "STARSHIP_DISTRO"
+#disabled = true
+
+
+# style = 'bg:blue'
+
+[status]
+map_symbol = true
+style = "bold red"
+symbol = '  '
+success_symbol = '[ ](bold green)'
+not_executable_symbol = '🚫 '
+not_found_symbol = '🔬 '
+sigint_symbol = '🧱 '
+signal_symbol = '⚡ '
+format = '[$symbol$common_meaning$signal_name$maybe_int]($style)'
+disabled = false
+
+[os]
+format = "[$symbol$version]($style) "
+style = "bold 8"
+disabled = false
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+Amazon = " "
+Android = " "
+Arch = "[ ](12 bold) "
+Artix = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Linux = " "
+Mabox = " "
+Macos = "[](bright-white bold) "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = "[ ](196 bold) "
+RedHatEnterprise = "[ ](196 bold) "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = "[ ](208 bold) "
+Unknown = " "
+Windows = "[](45 bold) "
+
+# Shell
+[shell]
+fish_indicator = '󰈺 '
+powershell_indicator = '[󰨊 ](33 bold)'
+zsh_indicator = '[ZSH󱉸](bold 202)'
+bash_indicator = ''
+unknown_indicator = 'mystery shell'
+# style = 'red bold'
+format = '󰆍  [$indicator]()'
+disabled = false
+
+# Shows the username
+[username]
+style_user = 'bold 113'
+style_root = 'black bold'
+format = '   [$user]($style) '
+disabled = false
+show_always = true
+
+[sudo]
+style = 'bold 226'
+symbol = '󱟝 '
+disabled = false
+format = 'as [$symbol]($style) '
+
+[directory]
+truncation_length = 3
+truncation_symbol = "…/"
+home_symbol = "󰠦 ~"
+read_only_style = "124"
+read_only = "  "
+format = "󰁥 [$path]($style)[$read_only]($read_only_style) "
+
+[directory.substitutions]
+"Documents" = " 󰈙 "
+"Downloads" = "   "
+"Music" = "   "
+"Pictures" = "   "
+
+[git_branch]
+symbol = " [󰊢 ](red) "
+format = "on[$symbol$branch]($style) "
+truncation_length = 4
+truncation_symbol = "…/"
+style = "bold green"
+
+[git_status]
+format = '[\($all_status$ahead_behind\)]($style) '
+style = "bold green"
+conflicted = " 󰕚 "
+up_to_date = " [ ](bold green) "
+untracked = " [ ](bold red) "
+ahead = "⇡${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+behind = "⇣${count}"
+stashed = "  "
+modified = "   "
+staged = '[++\($count\)](green)'
+renamed = "  "
+deleted = "  "
+
+[git_state]
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+cherry_pick = '[ PICKING](bold red)'
+merge = '[ MERGING](bold red)'
+rebase = '[ REBASING](bold red)'
+
+[package]
+disabled = true
+
+[terraform]
+format = "via [ terraform $version]($style) [$workspace]($style) "
+
+[vagrant]
+format = "via [ vagrant $version]($style) "
+
+[docker_context]
+symbol = "[󰡨 ](bold blue)"
+format = "via [$symbol$context](bold 81) "
+
+[helm]
+format = "via [ $version](bold purple) "
+
+[python]
+symbol = " [ ](blue) "
+python_binary = "python3"
+
+[nodejs]
+format = " [ $symbol$version](bold green) "
+symbol = "[󰎙](28 bold) "
+
+[ruby]
+format = "via [󰴭 $version]($style) "
+
+[kubernetes]
+format = 'on [ $context\($namespace\)](bold purple) '
+disabled = false
+[kubernetes.context_aliases]
+"clcreative-k8s-staging" = "cl-k8s-staging"
+"clcreative-k8s-production" = "cl-k8s-prod"
+
+[php]
+symbol = "[](99 bold) "
+format = ' [ $symbol$version](147 bold) '
+
+[lua]
+symbol = " [ ](bright-white bold) "
+style = "bold 245"
+
+[java]
+symbol = "[](bold) "
+
+[purescript]
+format = ' [$symbol$version](bold white)'
+symbol = "   "
+
+[rust]
+format = ' [ $version](red bold)'
+
+[crystal]
+format = ' [$symbol$version](bold 250) '
+symbol = "[](bold black) "
+
+[golang]
+format = ' [$symbol($version )($mod_version )]($style)'
+symbol = "[](81 bold) "
+style = 'bright-blue'
+
+[dart]
+format = 'via [ $version](bold red) '
+
+[elm]
+format = 'via [  $version](cyan bold) '
+
+[scala]
+symbol = '  '
+
+[c]
+format = ' [$symbol $name $version ]($style)'
+symbol = "  "
+style = 'bold 75'
+
+[swift]
+format = 'via [ $version](214 bold)'
+
+[aws]
+format = 'on [$symbol($profile )(\($region\) )]($style)'
+style = 'bold blue'
+symbol = '󰸏 '
+disabled = true
+
+[custom.npm_package]
+command = "npm -v"
+format = '󰏗 [ $symbol v$output]($style) '
+detect_files = ['package.json']
+style = "red bold"
+symbol = "[ ](160 bold)"
+
+[custom.composer_package]
+command = "composer -V | awk '{print $3}'"
+format = '󰏗 [ $symbol$output]($style) '
+detect_files = ['composer.json']
+style = "216 bold"
+symbol = "[](179 bold) "
+
+[custom.devFiles]
+detect_files = ['Procfile', 'README.md', 'Dockerfile']
+symbol = " "
+style = "bold white"
+format = '[$symbol]($style)'
+
+[custom.heroku]
+detect_files = ['Procfile']
+symbol = ""
+style = "bold 129"
+format = ' [$symbol]($style)'
+
+[custom.readme]
+detect_files = ['README.md']
+symbol = ""
+style = "bold 152"
+format = ' [$symbol]($style)'
+
+[custom.docker]
+detect_files = ['Dockerfile']
+symbol = "󰡨"
+style = "bold 75"
+format = ' [$symbol]($style)'
